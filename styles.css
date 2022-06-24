@@ -13,6 +13,8 @@ ul {
   li a {
     display: block;
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 25px;
+    margin-right: 40px;
     color: #12625F;
     text-align: center;
     padding: 14px 16px;
@@ -26,14 +28,16 @@ ul {
 
   .the-title{
     font-family: 'Anton', sans-serif;
+    font-size: 54px;
     color: #12625F;
   }
 
   .start-now{
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 32px;
     color: white;
     background-color: #12625F;
-    padding: 12px 20px;
+    padding: 12px 40px;
     border-radius: 2px;
     border: none;
   }
