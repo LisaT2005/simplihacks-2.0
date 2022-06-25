@@ -31,6 +31,17 @@ ul {
     color: #5EC57E;
   }
 
+  h2 {
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 50px;
+    margin-left:50px;
+    
+    color: #12625F;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
   .the-title{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 54px;
@@ -69,4 +80,15 @@ ul {
     border-radius: 50%;
     
    
-}
+  }
+
+  .square {
+    margin-left: 50px;
+    width: 20%;
+    height: 350px;
+    border-radius: 5%;
+    /*padding: 50px;
+    margin: 10px;*/
+    background-color: black;
+
+  }
