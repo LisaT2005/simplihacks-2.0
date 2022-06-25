@@ -1,3 +1,7 @@
+body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -13,6 +17,9 @@ ul {
   li a {
     display: block;
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 25px;
+    margin-left:100px;
+    
     color: #12625F;
     text-align: center;
     padding: 14px 16px;
@@ -25,15 +32,17 @@ ul {
   }
 
   .the-title{
-    font-family: 'Anton', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 54px;
     color: #12625F;
   }
 
   .start-now{
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 32px;
     color: white;
     background-color: #12625F;
-    padding: 12px 20px;
+    padding: 12px 40px;
     border-radius: 2px;
     border: none;
   }
@@ -41,3 +50,23 @@ ul {
   .start-now:hover{
     background-color: #5EC57E;
   }
+
+  .title{
+    margin-top: 250px;
+    margin-left: 150px;
+
+  }
+
+  .circle {
+    position: absolute;
+    z-index:-1;
+    margin-top: -700px;
+    margin-left: -350px;
+    width: 700px;
+    height:150px;
+    padding: 400px 800px;
+    background: #ECF8E5;
+    border-radius: 50%;
+    
+   
+}
