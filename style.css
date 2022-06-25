@@ -177,7 +177,7 @@ ul {
 }
 .reason2{
     background-color: #d5eec6;  
-
+    border-color: white;
     color:#0d3836;
     max-width: 300px;
     padding: 20px 20px;
@@ -209,6 +209,13 @@ ul {
   
 }
 
+.reason2:hover{
+  transform: scale(1.05);
+  background-color: #ebfde1;
+  color: #0d3836;
+
+}
+
   .square {
     position:absolute;
    
@@ -231,4 +238,13 @@ ul {
     color: white;
     padding: 14px 16px;
     text-decoration: none;
+  }
+
+  .recipe-image{
+    display:block;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
   }
