@@ -176,6 +176,7 @@ ul {
   
 }
 .reason2{
+  
     background-color: #d5eec6;  
     border-color: white;
     color:#0d3836;
@@ -200,6 +201,14 @@ ul {
     display:block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.food{
+  width: 371px;
+  height: 371px;
+  display: block;
+  /*margin-left: auto;
+  margin-right: auto;*/
 }
 
 .reason1:hover{
