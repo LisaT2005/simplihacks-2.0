@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Your Meal Planner</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pantry.html">Your Pantry</a></li>
+            <li><a href="recipes.html">Scrappy Recipes</a></li>
+            
+          </ul>
+    </div>
+    <div class="container">
+        <h1 id="title">Your Meal Plan</h1>
+        <span id="description">Use this calendar to plan your meals. Our calendar will help you recognize what you need to get (and how much of it) on your next shopping trip. This will help save you money.</span>
+        <div class="calendar">
+            <div class="top">
+                <h1 id="month"></h1>
+                <script>
+                    const today = new Date();
+                    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                    const cMonth = months[today.getMonth()];
+                    const dOfW = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    //const cDay = dOfW[today.getDay()];
+                    const cDate = today.getDate();
+                    document.getElementById("month").innerHTML = cMonth;
+                </script>
+            </div>
+            <div class="days">
+                <div class="sunday">Sunday</div>
+                <div class="monday">Monday</div>
+                <div class="tuesday">Tuesday</div>
+                <div class="wednesday">Wednesday</div>
+                <div class="thursday">Thursday</div>
+                <div class="friday">Friday</div>
+                <div class="saturday">Saturday</div>
+            </div>
+            <div id="dates"></div>
+                <script>
+                    function days(month) {
+                        if (month === "January" || month === "March" || month === "May" || month === "July" || month === "August" || month === "October" || month === "December") {
+                            return 31;
+                        } else if (month === "April" || month === "June" || month === "September" || month === "November") {
+                            return 30;
+                        } else {
+                            return 28;
+                        }
+                    }
+                    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+                    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+                    for (let i = days(months[today.getMonth() - 1]) - firstDay.getDay() + 1; i <= days(months[today.getMonth() - 1]); i++) {
+                        const newDay = document.createElement("div");
+                        newDay.innerHTML = i.toString();
+                        newDay.className = "nCurrent";
+                        document.getElementById('dates').appendChild(newDay);
+                    }
+                    for (let i = 1; i <= days(cMonth); i++) {
+                        const newDay = document.createElement("button");
+                        newDay.innerHTML = i.toString();
+                        newDay.className = "current";
+                        newDay.addEventListener("click", function() {
+                            window.open("form.html")
+                        });
+                        document.getElementById('dates').appendChild(newDay);
+                    }
+                    for (let i = 1; i <= 7 - lastDay.getDay() - 1; i++) {
+                        const newDay = document.createElement("div");
+                        newDay.innerHTML = i.toString();
+                        newDay.className = "nCurrent";
+                        document.getElementById('dates').appendChild(newDay);
+                    }
+                    
+                    /*
+                    let idfk = today.getDay;
+                    for (let i = cDate; i >= 1; i--) {
+                        if (idfk < 0) {
+                            idfk = 6;
+                        }
+                        const newDay = document.createElement("div");
+                        newDay.innerHTML = i.toString();
+                        newDay.className = dOfW[idfk];
+                        document.getElementById('dates').appendChild(newDay);
+                        idfk--;
+                    }
+                    idfk = today.getDay;
+                    for (let i = cDate + 1; i <= days(); i++) {
+                        if (idfk > 6) {
+                            idfk = 0;
+                        }
+                        const newDay = document.createElement("div");
+                        newDay.innerHTML = i.toString();
+                        newDay.className = dOfW[idfk];
+                        document.getElementById('dates').appendChild(newDay);
+                        idfk++;
+                    }
+                    */
+                </script>
+            <!--
+            <script>
+                const cm = document.getElementById("month").innerText;
+                if (cm === "January" || cm === "March" || cm === "May" || cm === "July" || cm === "August" || cm === "October" || cm === "December") {
+                    let numDays = 32;
+                } else if (cm === "April" || cm === "June" || cm === "September" || cm === "November") {
+                    let numDays = 31;
+                } else {
+                    let numDays = 29;
+                }
+                for (let i = 1; i < days; i++) {
+                    let newDiv = document.createElement("div");
+                    newDiv.setAttribute("class", "days");
+                    let newSpan = document.createElement("span");
+                    newSpan.setAttribute("id", i);
+                    document.getElementById(i).innerHTML = i;
+                    newDiv.append(newSpan);
+                    document.body.append(newDiv);
+                }
+            </script>
+            -->
+        </div>
+    </div>
+</body>
+</html>
