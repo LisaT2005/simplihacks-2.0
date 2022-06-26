@@ -1,6 +1,4 @@
-
-     
-    
+  
     let image;
     
  
@@ -78,6 +76,8 @@
          alert("You must fill in all blanks!");
        } else {
          document.getElementById("myUL").appendChild(li);
+         
+         
        }
        document.getElementById("myInput").value = "";
        var span = document.createElement("SPAN");
@@ -92,5 +92,11 @@
            div.style.display = "none";
          }
        }
+
+      
      }
+
+
+
+     
 
