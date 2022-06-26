@@ -20,24 +20,97 @@
             <li><a href="recipes.html">Scrappy Recipes</a></li>
 
         </ul>
-    </div>  
-       
+    </div>
+
     <h2 class="title-options" style="font-size: 50px">
         <span> Recipes </span>
     </h2>
 
-    <a href="https://itdoesnttastelikechicken.com/banana-peel-bacon/" target="_blank">
-    <button><div class="square">
-        <img class="recipe-image" src="salad.png" alt="Image of food">
-        <p class="recipe-title">Banana Peel Bacon</p>
-        <p class="recipe-credit">by It Doesn't Taste Like Chicken</p>
-    </div> </button>
-    </a>
+    <style>
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        /* Include the padding and border in an element's total width and height */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Style the close button */
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+        .close:hover {
+            background-color: #12625F;
+            color: white;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #12625F;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the input */
+        input {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            width: 75%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }
+
+        /* Style the "Add" button */
+        .addBtn {
+            padding: 9px;
+            width: 25%;
+            background: #ECF8E5;
+            color: #12625F;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        .addBtn:hover {
+            background-color: #cdf9b4;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div id="myDIV" class="header">
+            <h2 style="margin:5px">Your Pantry</h2>
+            <input type="text" id="myInput" placeholder="Add your food items here...">
+            <span onclick="newElement()" class="addBtn">Add</span>
+        </div>
 
 
-    </div>
+        <ul class="food" id="myUL">
 
-    <script src="/script.js"></script>
-</body>
+        </ul>
+
+        </div>
+
+        <script src="/recipesScript.js"></script>
+    </body>
 
 </html>
