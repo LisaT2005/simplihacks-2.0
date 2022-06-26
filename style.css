@@ -25,8 +25,6 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
-/* Change the link color to #111 (black) on hover */
 li a:hover {
   color: #5ec57e;
   font-family: "Source Sans Pro", sans-serif;
@@ -82,16 +80,17 @@ li a:hover {
   margin-right: auto;
 
   font-family: "Source Sans Pro", sans-serif;
-  background-color: #12625f;
-  color: white;
+  /*background-color: #12625f;
+  color: white;*/
+  color: #12625f;
   padding: 20px;
   max-width: 600px;
   text-align: center;
   font-size: 25px;
 
-  padding: 10px;
+  padding: 40px;
   z-index: -1;
-  margin-top: 150px;
+  /*margin-top: 150px;*/
 }
 
 .stats-title {
@@ -100,7 +99,7 @@ li a:hover {
   color: #12625f;
   margin-top: 300px;
   text-align: center;
-  padding: 60px 40px;
+  padding: 60px;
 }
 
 .slogan {
@@ -170,6 +169,13 @@ li a:hover {
   }
 }
 
+.reasons{
+  display:flex;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+}
+
 .reason1 {
   background-color: #ecf8e5;
   border-color: white;
@@ -178,6 +184,10 @@ li a:hover {
   padding: 20px 20px;
   margin: 30px 30px;
   text-align: center;
+  border: none;
+
+  
+
 }
 .reason2 {
   background-color: #d5eec6;
@@ -187,6 +197,8 @@ li a:hover {
   padding: 20px 20px;
   margin: 30px 30px;
   text-align: center;
+  border: none;
+  
 }
 .option {
   display: grid;
@@ -212,11 +224,12 @@ li a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  object-fit:scale-down;
 }
 
 .reason1:hover {
   transform: scale(1.05);
-  background-color: #ebfde1;
+  background-color: #d5eec6;
   color: #0d3836;
 }
 
@@ -232,9 +245,10 @@ li a:hover {
   margin-left: 50px;
   width: 20%;
   background-color: #12625f;
-  height: 350px;
-  border-radius: 5%;
+  height: 320px;
+  border-radius: 3%;
   text-align: center;
+  border: none;
   /*padding: 50px;
     margin: 10px;*/
 }
@@ -242,10 +256,20 @@ li a:hover {
 .recipe-title {
   display: block;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
 
   color: white;
-  padding: 14px 16px;
+  
+  text-decoration: none;
+}
+
+.recipe-credit {
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 15px;
+
+  color: white;
+  
   text-decoration: none;
 }
 
@@ -253,7 +277,11 @@ li a:hover {
   display: block;
   background-color: white;
   width: 200px;
-  height: 200px;
+  height: 150px;
+  object-fit: cover;
+  margin-top: 8%;
+  border-radius: 3%;
+  
   margin-left: auto;
   margin-right: auto;
 }
