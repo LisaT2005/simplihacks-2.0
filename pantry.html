@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -15,25 +15,25 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="pantry.html">Your Pantry</a></li>
-            <li><a href="recipes.html">Scrappy Recipes</a></li>
+            <li><a href="recipes.html">Scrappy Recipies</a></li>
             
           </ul>
     </div>
+
     <style>
-    body{
+  body{
         margin: 0;
         min-width: 250px;
       }
       
-      /* Include the padding and border in an element's total width and height */
+ 
       * {
         box-sizing: border-box;
       }
       
       
       
-      
-      /* Style the close button */
+   
       .close {
         position: absolute;
         right: 0;
@@ -46,7 +46,7 @@
         color: white;
       }
       
-      /* Style the header */
+ 
       .header {
         background-color: #12625F;
         padding: 30px 40px;
@@ -54,14 +54,14 @@
         text-align: center;
       }
       
-      /* Clear floats after the header */
+     
       .header:after {
         content: "";
         display: table;
         clear: both;
       }
       
-      /* Style the input */
+   
       input {
         margin: 0;
         border: none;
@@ -72,18 +72,20 @@
         font-size: 16px;
       }
       
-      /* Style the "Add" button */
+     
       .addBtn {
         padding: 9px;
-        width: 25%;
+        width: 10%;
         background: #ECF8E5;
         color: #12625F;
-        float: left;
+        margin-right: 100px;
+float: right;
         text-align: center;
         font-size: 16px;
         cursor: pointer;
         transition: 0.3s;
         border-radius: 0;
+       
       }
       
       .addBtn:hover {
@@ -95,16 +97,179 @@
       
       <div id="myDIV" class="header">
         <h2 style="margin:5px">Your Pantry</h2>
-        <input type="text" id="myInput" placeholder="Add your food items here...">
-        <span onclick="newElement()" class="addBtn">Add</span>
+        <form autocomplete="off" action="">
+            <div class="autocomplete" style="width:300px;">
+              <input id="myInput" class="textbox"type="text" name="myFood" placeholder="Add your pantry food...">
+            </div>
+            <span onclick="newElement()" class="addBtn"> Add </span>
+          </form>
+ 
       </div>
       
-      <ul class="food"id="myUL">
-       
-      </ul>
+      <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        body {
+          font: 16px Arial;  
+        }
+        
       
+        .autocomplete {
+          position: relative;
+          display: inline-block;
+        }
+        
+       
+        
+        .autocomplete-items {
+          position: absolute;
+          border: 1px solid #d4d4d4;
+          border-bottom: none;
+          border-top: none;
+          z-index: 99;
+         
+          top: 100%;
+          left: 0;
+          right: 0;
+        }
+        
+        .autocomplete-items div {
+          padding: 10px;
+          cursor: pointer;
+          color:#000000;
+          background-color: #fff; 
+          border-bottom: 1px solid #d4d4d4; 
+        }
+        
+        /*when hovering an item:*/
+        .autocomplete-items div:hover {
+          background-color: #e9e9e9; 
+        }
+        
+      
+        </style>
+        </head>     
+        <body>
+        
+        
+        
+        <script>
+        function autocomplete(inp, arr) {
+     
+          var currentFocus;
+       
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+       
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+             
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+          
+              this.parentNode.appendChild(a);
+           
+              for (i = 0; i < arr.length; i++) {
+               
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+             
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+           
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                
+                  b.addEventListener("click", function(e) {
+                    
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                 
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+    
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+           
+                currentFocus++;
+            
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+           
+                currentFocus--;
+               
+                addActive(x);
+              } else if (e.keyCode == 13) {
+              
+                e.preventDefault();
+                if (currentFocus > -1) {
+                 
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+           
+            if (!x) return false;
+         
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+      
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+          
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+          
+   
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+       
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+    
+        var food = ["Artichoke","Asparagus","Eggplant","Avocado","Broccoli","Brussels Sprouts","Cabbage","Carrots","Cauliflower","Celery","Corn","Cucumbers","Garlic","Green Beans","Mustard","Gourds","Kale","Arugula","Lettuce","Lima Beans","Mushrooms","Onions","Peas","Peppers","Potatoes","Radish","Rhubarb","Cauliflower","Shallots","Spinach","Squash","Tomatoes","Zucchini","Apple","Apricots","Avocado","Banana","Blackberries","Kiwi","Lemon","Blackcurrant","Blueberries","Cherries","Clementine","Cranberries","Grapefruit","Grapes","Lime","Mango","Orange","Peaches","Pear","Pineapple","Pomegranate","Raspberries","Strawberries","Watermelon"];
+        
+      
+        autocomplete(document.getElementById("myInput"), food);
+        </script>
+        
+      <ul class="food"id="myUL" name="food">
+      
+    </ul>
+
+
+
+
+
+
+
+
+      </style>
       <script>
-      // Create a "close" button and append it to each list item
+   
       var myNodelist = document.getElementsByTagName("LI");
       var i;
       for (i = 0; i < myNodelist.length; i++) {
@@ -113,9 +278,9 @@
         span.className = "close";
         span.appendChild(txt);
         myNodelist[i].appendChild(span);
+
       }
-      
-      // Click on a close button to hide the current list item
+  
       var close = document.getElementsByClassName("close");
       var i;
       for (i = 0; i < close.length; i++) {
@@ -133,12 +298,14 @@
         }
       }, false);
       
-      // Create a new list item when clicking on the "Add" button
+
       function newElement() {
         var li = document.createElement("li");
         var inputValue = document.getElementById("myInput").value;
         var t = document.createTextNode(inputValue);
         li.appendChild(t);
+        
+        
         if (inputValue === '') {
           alert("You must write something!");
         } else {
@@ -151,7 +318,7 @@
         span.className = "close";
         span.appendChild(txt);
         li.appendChild(span);
-      
+   
         for (i = 0; i < close.length; i++) {
           close[i].onclick = function() {
             var div = this.parentElement;
