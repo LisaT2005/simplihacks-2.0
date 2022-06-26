@@ -1,17 +1,61 @@
 
      
+    
+    
+    const basicButton = document.createElement("button")
+     
+     ,  title = document.createElement('p')
+     ,  credit = document.createElement('p')
+     ,  img = document.createElement('img');
+     ;
+
+     basicButton.className = "square";
+      basicButton.setAttribute("style", "/recipeStyle.css");
+
+      img.className = 'recipe-image';
+      img.setAttribute("style", "/recipeStyle.css");
+    
+     title.className = "recipe-title";
+     title.setAttribute("style", "/recipeStyle.css");
+     
+     credit.className = "recipe-credit";
+     credit.setAttribute("style", "/recipeStyle.css");
+
+     
+     basicButton.appendChild(title);
+     basicButton.appendChild(credit);
+     
      // Create a new list item when clicking on the "Add" button
      function newElement() {
-       var li = document.createElement("button");
-       li.className = "square";
-        li.setAttribute("style", "/recipeStyle.css");
+       
+        var li = basicButton.cloneNode(true);
        
        
-       var inputValue = document.getElementById("myInput").value;
-       var t = document.createTextNode(inputValue);
-       li.appendChild(t);
-       if (inputValue === '') {
-         alert("You must write something!");
+        
+       
+       
+       var titleInput = document.getElementById("titleInput").value;
+       let creditInput = document.getElementById("creditInput").value;
+      
+       
+        li.childNodes[0].textContent = titleInput;
+        li.childNodes[1].textContent = creditInput;
+
+        li.addEventListener("click", function(){
+            window.open(document.getElementById("linkInput").value);
+        });
+        
+        
+       
+       var t = document.createTextNode(titleInput);
+       title.textContent = titleInput;
+       credit.tetContent = titleInput;
+       
+       
+       
+
+       if (titleInput === '' || creditInput === '') {
+         alert("You must fill in all blanks!");
        } else {
          document.getElementById("myUL").appendChild(li);
        }

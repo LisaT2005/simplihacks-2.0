@@ -72,7 +72,7 @@
             border-radius: 0;
             width: 75%;
             padding: 10px;
-            
+            float: left;
             font-size: 16px;
         }
 
@@ -98,31 +98,23 @@
 
     <body>
 
-        <a href="recipesAdd.html">
-            <button>Go to recipesAdd</button>
-        </a>
-
-        <button onclick="newElement()">add</button>
-
-        
         <div id="myDIV" class="header">
             <h2 style="margin:5px">Recipe Title</h2>
-            <input type="text" id="titleInput" placeholder="Add your food items here...">
-            
+            <input type="text" id="myInput" placeholder="Add your food items here...">
+            <span onclick="newElement()" class="addBtn">Add</span>
         </div>
 
         <div id="myDIV" class="header">
-            <h2 style="margin:5px">Recipe Author</h2>
-            <input type="text" id="creditInput" placeholder="Add your food items here...">
-            
+            <h2 style="margin:5px">Instructions</h2>
+            <input type="text" id="myInput" placeholder="Add your food items here...">
+            <span onclick="newElement()" class="addBtn">Add</span>
         </div>
 
         <div id="myDIV" class="header">
-            <h2 style="margin:5px">Link to recipe</h2>
-            <input type="text" id="linkInput" placeholder="Add your food items here...">
-           
+            <h2 style="margin:5px"></h2>
+            <input type="text" id="myInput" placeholder="Add your food items here...">
+            <span onclick="newElement()" class="addBtn">Add</span>
         </div>
-    
 
 
         <ul class="food" id="myUL">
@@ -131,7 +123,7 @@
 
         </div>
 
-        <script src="/recipesScript.js"></script>
+        <script src="/recipesAddScript.js"></script>
     </body>
 
 </html>
