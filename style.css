@@ -340,3 +340,20 @@ li a:hover {
     background: #ddd;
   }
   
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+  }
+  
+  .fa {
+    font-size: 25px;
+  }
+  
+  .textbox{
+    
+    margin-left:-300px ;
+    width:900px;
+  }
+  
+  
+  
