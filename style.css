@@ -257,3 +257,40 @@ li a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+* {
+    box-sizing: border-box;
+  }
+
+  .food {
+    margin: 0;
+    padding: 0;
+  }
+  
+ 
+ .food li {
+    cursor: pointer;
+    position: relative;
+    padding:12px 12px;
+    width: 100%;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    
+   
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+ 
+  .food li:nth-child(odd) {
+    background: #f9f9f9;
+  }
+  
+  
+  .food li:hover {
+    background: #ddd;
+  }
+  
