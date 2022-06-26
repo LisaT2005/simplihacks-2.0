@@ -46,6 +46,16 @@ li a:hover {
   border: none;
 }
 
+.add-recipe-button {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 32px;
+  color: #12625f;
+  background-color: white;
+  padding: 12px 40px;
+  border-radius: 2px;
+  border: none;
+}
+
 .start-now:hover {
   background-color: #5ec57e;
 }
@@ -100,6 +110,11 @@ li a:hover {
   margin-top: 300px;
   text-align: center;
   padding: 60px;
+}
+
+.myFile {
+  font-family: "Source Sans Pro", sans-serif;
+  
 }
 
 .slogan {
@@ -177,7 +192,7 @@ li a:hover {
 }
 
 .reason1 {
-  background-color: #ecf8e5;
+  background-color: #d5eec6;
   border-color: white;
   color: #0d3836;
   max-width: 300px;
@@ -189,6 +204,8 @@ li a:hover {
   
 
 }
+
+
 .reason2 {
   background-color: #d5eec6;
   border-color: white;
@@ -221,7 +238,7 @@ li a:hover {
 
 .reason1:hover {
   transform: scale(1.05);
-  background-color: #d5eec6;
+  background-color: #ebfde1;
   color: #0d3836;
 }
 
@@ -233,16 +250,18 @@ li a:hover {
 
 .square {
   position: relative;
-
+  text-align: center;
+  margin: auto;
  
   width: 20%;
   background-color: #12625f;
   height: 320px;
   border-radius: 3%;
-  text-align: center;
+  
   border: none;
-  padding: 80px;
-    margin: 10px;
+  padding: 40px;
+  margin: 10px;
+  
 }
 
 .square:hover {
@@ -277,11 +296,12 @@ li a:hover {
   width: 200px;
   height: 150px;
   object-fit: cover;
-  margin-top: 8%;
+  margin-left:-8px;
+  
+  
   border-radius: 3%;
   
-  margin-left: auto;
-  margin-right: auto;
+  
 }
 * {
     box-sizing: border-box;

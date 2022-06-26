@@ -72,7 +72,7 @@
             border-radius: 0;
             width: 75%;
             padding: 10px;
-            
+
             font-size: 16px;
         }
 
@@ -98,31 +98,45 @@
 
     <body>
 
-        <a href="recipesAdd.html">
-            <button>Go to recipesAdd</button>
-        </a>
 
-        <button onclick="newElement()">add</button>
 
-        
         <div id="myDIV" class="header">
-            <h2 style="margin:5px">Recipe Title</h2>
-            <input type="text" id="titleInput" placeholder="Add your food items here...">
             
+            
+            <h2 style="margin:5px">Recipe Title</h2>
+            <input type="text" id="titleInput" placeholder="Add title here...">
+
         </div>
 
         <div id="myDIV" class="header">
             <h2 style="margin:5px">Recipe Author</h2>
-            <input type="text" id="creditInput" placeholder="Add your food items here...">
-            
+            <input type="text" id="creditInput" placeholder="Add author here...">
+
         </div>
 
         <div id="myDIV" class="header">
             <h2 style="margin:5px">Link to recipe</h2>
-            <input type="text" id="linkInput" placeholder="Add your food items here...">
-           
+            <input type="text" id="linkInput" placeholder="Add link here...">
+
         </div>
-    
+
+        <div id="myDIV" class="header">
+            <h2 style="margin:5px">Add image (optional)</h2>
+
+            <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+                    style="display: none;"></p>
+            <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+            <p><img id="output" width="200" /></p>
+
+            <script src="/recipesScript.js">
+            </script>
+
+<button class="add-recipe-button" onclick="newElement()">Add Recipe</button>
+
+
+        </div>
+       
+
 
 
         <ul class="food" id="myUL">

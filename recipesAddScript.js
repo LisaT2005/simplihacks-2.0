@@ -1,3 +1,0 @@
-function newElement(){
-    recipesScript.newElement();
-}
