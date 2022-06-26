@@ -69,10 +69,10 @@ li a:hover {
   position: absolute;
   z-index: -1;
   margin-top: -337px;
-  margin-left: -450px;
-  width: 700px;
+  margin-left: -100px;
+  width: 1000px;
 
-  padding: 400px 800px;
+  padding: 430px 800px;
   background: #ecf8e5;
   border-radius: 50%;
 }
@@ -109,7 +109,7 @@ li a:hover {
   color: #12625f;
   margin-top: 300px;
   text-align: center;
-  padding: 60px;
+  padding: 80px;
 }
 
 .myFile {
