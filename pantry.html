@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -26,14 +26,14 @@ DOCTYPE html>
         min-width: 250px;
       }
       
- 
+      /* Include the padding and border in an element's total width and height */
       * {
         box-sizing: border-box;
       }
       
       
       
-   
+      /* Style the close button */
       .close {
         position: absolute;
         right: 0;
@@ -46,7 +46,7 @@ DOCTYPE html>
         color: white;
       }
       
- 
+      /* Style the header */
       .header {
         background-color: #12625F;
         padding: 30px 40px;
@@ -54,25 +54,25 @@ DOCTYPE html>
         text-align: center;
       }
       
-     
+      /* Clear floats after the header */
       .header:after {
         content: "";
         display: table;
         clear: both;
       }
       
-   
+      /* Style the input */
       input {
         margin: 0;
         border: none;
         border-radius: 0;
-        width: 75%;
+        width: 100%;
         padding: 10px;
-        float: left;
+        float: center;
         font-size: 16px;
       }
       
-     
+      /* Style the "Add" button */
       .addBtn {
         padding: 9px;
         width: 10%;
@@ -105,7 +105,9 @@ float: right;
           </form>
  
       </div>
-      
+      <div class="reminder">
+<p>The progress bars will keeps track of how much longer your fruits and veggies will hold up in the fridge. These are all estimates, so make sure to check in on them and if they do go bad check out one of our recipies instead of throwing them out!</p>
+      </div>
       <style>
         * {
           box-sizing: border-box;
@@ -114,8 +116,16 @@ float: right;
         body {
           font: 16px Arial;  
         }
-        
-      
+        .reminder{
+            float: right;
+            background-color: #12625F;
+            color: #fff;
+            max-width: 300px;
+            padding: 10px 10px;
+            margin: 20px 20px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        /*the container must be positioned relative:*/
         .autocomplete {
           position: relative;
           display: inline-block;
@@ -129,7 +139,7 @@ float: right;
           border-bottom: none;
           border-top: none;
           z-index: 99;
-         
+          /*position the autocomplete items to be the same width as the container:*/
           top: 100%;
           left: 0;
           right: 0;
@@ -157,85 +167,89 @@ float: right;
         
         <script>
         function autocomplete(inp, arr) {
-     
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
           var currentFocus;
-       
+          /*execute a function when someone writes in the text field:*/
           inp.addEventListener("input", function(e) {
               var a, b, i, val = this.value;
-       
+              /*close any already open lists of autocompleted values*/
               closeAllLists();
               if (!val) { return false;}
               currentFocus = -1;
-             
+              /*create a DIV element that will contain the items (values):*/
               a = document.createElement("DIV");
               a.setAttribute("id", this.id + "autocomplete-list");
               a.setAttribute("class", "autocomplete-items");
-          
+              /*append the DIV element as a child of the autocomplete container:*/
               this.parentNode.appendChild(a);
-           
+              /*for each item in the array...*/
               for (i = 0; i < arr.length; i++) {
-               
+                /*check if the item starts with the same letters as the text field value:*/
                 if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-             
+                  /*create a DIV element for each matching element:*/
                   b = document.createElement("DIV");
                   /*make the matching letters bold:*/
                   b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                   b.innerHTML += arr[i].substr(val.length);
-           
+                  /*insert a input field that will hold the current array item's value:*/
                   b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                
+                  /*execute a function when someone clicks on the item value (DIV element):*/
                   b.addEventListener("click", function(e) {
-                    
+                      /*insert the value for the autocomplete text field:*/
                       inp.value = this.getElementsByTagName("input")[0].value;
-                 
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
                       closeAllLists();
                   });
                   a.appendChild(b);
                 }
               }
           });
-    
+          /*execute a function presses a key on the keyboard:*/
           inp.addEventListener("keydown", function(e) {
               var x = document.getElementById(this.id + "autocomplete-list");
               if (x) x = x.getElementsByTagName("div");
               if (e.keyCode == 40) {
-           
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
                 currentFocus++;
-            
+                /*and and make the current item more visible:*/
                 addActive(x);
               } else if (e.keyCode == 38) { //up
-           
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
                 currentFocus--;
-               
+                /*and and make the current item more visible:*/
                 addActive(x);
               } else if (e.keyCode == 13) {
-              
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
                 e.preventDefault();
                 if (currentFocus > -1) {
-                 
+                  /*and simulate a click on the "active" item:*/
                   if (x) x[currentFocus].click();
                 }
               }
           });
           function addActive(x) {
-           
+            /*a function to classify an item as "active":*/
             if (!x) return false;
-         
+            /*start by removing the "active" class on all items:*/
             removeActive(x);
             if (currentFocus >= x.length) currentFocus = 0;
             if (currentFocus < 0) currentFocus = (x.length - 1);
-      
+            /*add class "autocomplete-active":*/
             x[currentFocus].classList.add("autocomplete-active");
           }
           function removeActive(x) {
-          
+            /*a function to remove the "active" class from all autocomplete items:*/
             for (var i = 0; i < x.length; i++) {
               x[i].classList.remove("autocomplete-active");
             }
           }
           function closeAllLists(elmnt) {
-          
-   
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
             var x = document.getElementsByClassName("autocomplete-items");
             for (var i = 0; i < x.length; i++) {
               if (elmnt != x[i] && elmnt != inp) {
@@ -243,16 +257,16 @@ float: right;
               }
             }
           }
-       
+          /*execute a function when someone clicks in the document:*/
           document.addEventListener("click", function (e) {
               closeAllLists(e.target);
           });
         }
         
-    
-        var food = ["Artichoke","Asparagus","Eggplant","Avocado","Broccoli","Brussels Sprouts","Cabbage","Carrots","Cauliflower","Celery","Corn","Cucumbers","Garlic","Green Beans","Mustard","Gourds","Kale","Arugula","Lettuce","Lima Beans","Mushrooms","Onions","Peas","Peppers","Potatoes","Radish","Rhubarb","Cauliflower","Shallots","Spinach","Squash","Tomatoes","Zucchini","Apple","Apricots","Avocado","Banana","Blackberries","Kiwi","Lemon","Blackcurrant","Blueberries","Cherries","Clementine","Cranberries","Grapefruit","Grapes","Lime","Mango","Orange","Peaches","Pear","Pineapple","Pomegranate","Raspberries","Strawberries","Watermelon"];
+        /*An array containing all the country names in the world:*/
+        var food = ["Artichoke ⬤⬤⬤⬤◯◯◯◯◯◯ (3 DAYS LEFT!)","Asparagus ⬤⬤◯◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Eggplant ⬤⬤⬤⬤◯◯◯◯◯◯ (10 DAYS LEFT!)","Avocado ⬤⬤⬤⬤◯◯◯◯◯◯ (3 DAYS LEFT!)","Broccoli ⬤⬤⬤⬤◯◯◯◯◯◯ (10 DAYS LEFT!)","Brussels Sprouts ⬤⬤⬤⬤◯◯◯◯◯◯ (10 DAYS LEFT!)","Cabbage ⬤⬤⬤⬤◯◯◯◯◯◯ (3 DAYS LEFT!)","Carrots ⬤⬤◯◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Cauliflower ⬤⬤◯◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Celery ⬤⬤⬤◯◯◯◯◯◯◯ (5 DAYS LEFT!)","Corn ⬤⬤⬤◯◯◯◯◯◯◯ (5 DAYS LEFT!)","Cucumbers ⬤⬤⬤◯◯◯◯◯◯◯ (5 DAYS LEFT!)","Garlic ⬤◯◯◯◯◯◯◯◯◯ (20 DAYS LEFT!)","Green Beans ⬤⬤◯◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Mustard ⬤⬤◯◯◯◯◯◯◯◯ (12 DAYS LEFT!)","Gourds ⬤⬤⬤⬤◯◯◯◯◯ (3 DAYS LEFT!)","Kale ⬤⬤⬤⬤◯◯◯◯◯ (3 DAYS LEFT!)","Arugula ⬤⬤⬤⬤◯◯◯◯◯ (3 DAYS LEFT!)","Lettuce ⬤⬤⬤◯◯◯◯◯ (4 DAYS LEFT!)","Lima Beans ⬤⬤⬤⬤◯◯◯◯◯ (3 DAYS LEFT!)","Mushrooms ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Onions ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Peas ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Peppers ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Potatoes ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Radish ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Rhubarb ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Cauliflower ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Shallots ⬤⬤◯◯◯◯◯◯◯ (5 DAYS LEFT!)","Spinach ⬤⬤◯◯◯◯◯◯◯ (7 DAYS LEFT!)","Squash ⬤⬤⬤⬤◯◯◯◯ (3 DAYS LEFT!)","Tomatoes ⬤⬤⬤⬤⬤⬤◯◯ (2 DAYS LEFT!)","Zucchini ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Apple ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Apricots ⬤⬤⬤⬤⬤⬤◯◯ (2 DAYS LEFT!)","Avocado ⬤⬤⬤⬤⬤⬤◯◯ (2 DAYS LEFT!)","Banana ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Blackberries ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Kiwi ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Lemon ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Blueberries ⬤⬤◯◯◯◯◯◯ (3 DAYS LEFT!)","Cherries ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Clementine ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Cranberries ⬤⬤⬤◯◯◯◯◯◯ (8 DAYS LEFT!)","Grapefruit ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Grapes ⬤⬤⬤⬤◯◯◯◯ (4 DAYS LEFT!)","Lime ⬤⬤⬤⬤◯◯◯◯ (4 DAYS LEFT!)","Mango ⬤⬤⬤⬤◯◯◯◯ (4 DAYS LEFT!)","Orange ⬤⬤⬤⬤◯◯◯◯ (5 DAYS LEFT!)","Peaches ⬤⬤⬤⬤◯◯◯◯ (4 DAYS LEFT!)","Pear ⬤⬤⬤⬤◯◯◯◯ (5 DAYS LEFT!)","Pineapple ⬤⬤⬤⬤◯◯◯◯ (4 DAYS LEFT!)","Pomegranate ⬤⬤⬤⬤◯◯◯◯ (4 DAYS LEFT!)","Raspberries ⬤⬤⬤⬤⬤⬤◯◯ (3 DAYS LEFT!)","Strawberries ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)","Watermelon ⬤⬤⬤◯◯◯◯◯◯ (6 DAYS LEFT!)"];
         
-      
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
         autocomplete(document.getElementById("myInput"), food);
         </script>
         
@@ -269,7 +283,7 @@ float: right;
 
       </style>
       <script>
-   
+      // Create a "close" button and append it to each list item
       var myNodelist = document.getElementsByTagName("LI");
       var i;
       for (i = 0; i < myNodelist.length; i++) {
@@ -280,7 +294,8 @@ float: right;
         myNodelist[i].appendChild(span);
 
       }
-  
+      
+      // Click on a close button to hide the current list item
       var close = document.getElementsByClassName("close");
       var i;
       for (i = 0; i < close.length; i++) {
@@ -298,7 +313,7 @@ float: right;
         }
       }, false);
       
-
+      // Create a new list item when clicking on the "Add" button
       function newElement() {
         var li = document.createElement("li");
         var inputValue = document.getElementById("myInput").value;
@@ -309,7 +324,9 @@ float: right;
         if (inputValue === '') {
           alert("You must write something!");
         } else {
+         // document.getElementById("bar").appendChild();
           document.getElementById("myUL").appendChild(li);
+         
         }
         document.getElementById("myInput").value = "";
       
