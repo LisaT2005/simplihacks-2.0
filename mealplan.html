@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Your Meal Planner</title>
+    <title>Your Meal Planner - Ortify</title>
 </head>
 <body>
     <div class="nav-bar">
@@ -67,7 +67,7 @@
                         newDay.innerHTML = i.toString();
                         newDay.className = "current";
                         newDay.addEventListener("click", function() {
-                            window.open("form.html")
+                            window.open("form.html", "_self")
                         });
                         document.getElementById('dates').appendChild(newDay);
                     }
@@ -103,6 +103,7 @@
                     }
                     */
                 </script>
+                <script src="form.js"></script>
             <!--
             <script>
                 const cm = document.getElementById("month").innerText;
