@@ -19,7 +19,6 @@ function createSquare(){
     
 } */
 
-document.getElementById('reason1').addEventListener("click", function(){
-    window.localStorage.setItem('key', 'value')
-});
-
+document.getElementById('start-now').addEventListener("click", function(){
+    document.getElementById("reasons").scrollIntoView({behavior: 'smooth'});
+})
