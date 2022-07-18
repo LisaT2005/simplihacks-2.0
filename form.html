@@ -6,20 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Add to Your Meal Plan - Ortify</title>
 </head>
 
 <body>
-    <form action="submission.html" method="POST">
-        <h1>Add a meal</h1>
-        <section class="dish">
+    <div class="nav-bar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pantry.html">Your Pantry</a></li>
+            <li><a href="recipes.html">Scrappy Recipes</a></li>
+            <li><a href="mealplan.html">Meal Planning</a></li>
+            
+          </ul>
+    </div>
+
+    <form action="submission.html" method="GET">
+        <h1 class="title-options">Add a meal</h1>
+        <section class="header">
             <label for="name">What are you making?</label>
             <br>
-            <input name="name" id="name" placeholder="Enter a dish here">
+            <input class="input" name="name" id="name" placeholder="Enter a dish here">
         </section>
-        <hr>
+        
 
-        <section class="toppings">
+        <style>       
+        .header {
+            background-color: #12625F;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .input {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            width: 75%;
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        </style>
+
+        <section class="header">
             <h3>What ingredients are needed to make that dish?</h3>
             <input type="checkbox" name="topping" id="lettuce" value="lettuce">
             <label for="lettuce">Lettuce</label>
@@ -48,6 +85,7 @@
             <input type="submit" value="Submit">
         </section>
     </form>
+    <script src="form.js"></script>
 </body>
 
 </html>
